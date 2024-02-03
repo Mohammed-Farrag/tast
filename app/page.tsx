@@ -6,10 +6,10 @@ import MobileSidebar from "@/components/MobileSidebar";
 import PersonalInfo from "@/components/PersonalInfo";
 import PickAddon from "@/components/PickAddon";
 import SelectPlan from "@/components/SelectPlan";
-import { Item } from "@/modals/Item";
+import {Item} from "@/modals/Item";
 import classNames from "classnames";
-import { useState } from "react";
-import { NextUIProvider } from "@nextui-org/react";
+import {useState} from "react";
+import {NextUIProvider} from "@nextui-org/react";
 import Thank from "@/components/Thank";
 
 export default function Home() {
@@ -36,7 +36,7 @@ export default function Home() {
   // go next
   const goNext = () => {
 
-    let active = navItems.find(nav => nav.active == true);
+    let active: Item = navItems.find((nav:Item) => nav.active == true) || navItems[0];
     if (active?.id == navItems.at(navItems.length - 1)?.id) {
       setConfirmed(true)
     } else {
@@ -46,7 +46,7 @@ export default function Home() {
   }
   // go prev
   const goPrev = () => {
-    let active = navItems.find(nav => nav.active == true);
+    let active : Item = navItems.find(nav => nav.active == true) || navItems[0];
     let modified = navItems.map((nav: Item) => nav.id == (active?.id - 1) ? { ...nav, active: true } : { ...nav, active: false });
     setNavItems(modified)
   }
